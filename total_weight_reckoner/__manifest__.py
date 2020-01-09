@@ -1,7 +1,8 @@
-# -*- coding: utf-8 -*-
+# -*- encoding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright © 2016 Techspawn Solutions. (<http://techspawn.in>).
+#    Copyright © 2016 Techspawn Solutions. (<https://techspawn.com>).
+#    Copyright (C) 2004-2016 OpenERP S.A. (<http://www.odoo.com>).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -17,29 +18,29 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-
 {
-    'name': "Warehouse Restrictions",
+    'name': "Total Weight Reckoner",
 
     'summary': """
-         Warehouse and Stock Location Restriction on Users.""",
+        Calculates Total Gross Weight and Total Net Weight.
+        """,
 
     'description': """
-        This Module Restricts the User from Accessing Warehouse and Process Stock Moves other than allowed to Warehouses and Stock Locations.
-    """,
+        Total Weight Reckoner will calculate the total Gross Weight and Net Weight of every product in the order line and invoice lines.
+        """,
 
     'author': "Techspawn Solutions",
-    'website': "http://www.techspawn.com",
-    'license':'OPL-1',	
-    'category': 'Warehouse',
-    'version': '0.2',
-    'images': ['static/description/main.png'],
-    'depends': ['base', 'stock'],
-
+    'website': "https://techspawn.com",
+    'category': 'Accounting',
+    'version': '0.1',
+    'depends': ['base', 'sale', 'account', 'purchase', 'stock', 'sale_stock' ,'stock_account',],
+    'images': [
+        'images/main.jpg',
+    ],
     'data': [
-
-        'users_view.xml',
-        'security/security.xml',
-        # 'security/ir.model.access.csv',
+        'views/sale_order_weight.xml',
+        'views/purchase_order_weight.xml',
+        'views/acc_invoice_weight.xml',
+        'views/delivery_order_weight.xml',
     ],
 }
