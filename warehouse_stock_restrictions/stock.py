@@ -2,6 +2,7 @@ from odoo import models, fields, api, _
 from odoo.exceptions import AccessError
 
 
+
 class ResUsers(models.Model):
     _inherit = 'res.users'
 
