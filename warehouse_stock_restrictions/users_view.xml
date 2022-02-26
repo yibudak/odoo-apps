@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
+<odoo>
     <data>
+
         <record id="view_users_form" model="ir.ui.view">
             <field name="name">usability.default_warehouse.res.users.form</field>
             <field name="model">res.users</field>
@@ -26,10 +27,27 @@
                 </group>
                 <notebook>
                     <page string="Allowed Stock Locations" attrs="{'invisible': [('restrict_locations','!=', True)]}">
+                        <h4>Stock Locations user can done and cancel</h4>
                         <field name="stock_location_ids" nolabel="1" colspan="2"/>
+                        <h4>Stock Locations user can cancel</h4>
+                        <field name="stock_cancel_location_ids" nolabel="1" colspan="2"/>
                     </page>
                 </notebook>
             </field>
         </record>
+
+        <record id="view_picking_type_security_form" model="ir.ui.view">
+            <field name="name">stock.picking.type.allowed_users.form</field>
+            <field name="model">stock.picking.type</field>
+            <field name="inherit_id" ref="stock.view_picking_type_form"/>
+            <field name="arch" type="xml">
+
+                    <field name="default_location_dest_id" position="after">
+                        <field name="allowed_user_ids" />
+                    </field>
+
+            </field>
+        </record>
+
     </data>
-</openerp>
+</odoo>
